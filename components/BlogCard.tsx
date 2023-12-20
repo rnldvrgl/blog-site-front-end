@@ -11,13 +11,13 @@ const BlogCard = ({ blog }: {
 	const truncateBlogDesc = blog.attributes.description.length > 80 ? blog.attributes.description.substring(0, 80) + "..." : blog.attributes.description;
 
 	const imageUrl = "http://127.0.0.1:1337" + blog?.attributes.image?.data?.attributes?.url;
-	console.log(blog)
+
 	return (
-		<Card className='overflow-hidden cursor-pointer'>
+		<Card className='overflow-hidden cursor-pointer group'>
 			<CardContent className='px-4 py-5'>
-				<Link href={"/"}>
-					<AspectRatio ratio={4 / 3} className='relative w-full'>
-						<Image fill className='border rounded-sm' objectFit="cover" src={blog?.attributes?.image?.data ? imageUrl : "/no-image.jpg"} alt={""} />
+				<Link href={`/blog/${blog.id}`}>
+					<AspectRatio ratio={4 / 3} className='relative w-full overflow-hidden border rounded-sm '>
+						<Image fill objectFit="cover" src={blog?.attributes?.image?.data ? imageUrl : "/no-image.jpg"} alt={""} className="transition-all duration-500 ease-in-out group-hover:scale-110" />
 					</AspectRatio>
 					<div className='p-2 mt-2'>
 						<div className='flex flex-wrap gap-3 my-2'>
