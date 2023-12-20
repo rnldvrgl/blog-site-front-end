@@ -1,11 +1,26 @@
 "use client"
 import React from 'react'
+import { Card, CardHeader } from './ui/card';
 
-const Category = () => {
+interface ICategory {
+	id: number;
+	attributes: {
+		Title: string;
+		createdAt: string;
+	}
+}
+
+type TCategoryProps = {
+	category: ICategory;
+}
+
+const Category = ({ category }: TCategoryProps) => {
 	return (
-		<div onClick={() => { }} className='bg-[#af8533] p-4 rounded-lg shadow-md cursor-pointer'>
-			Title
-		</div>
+		<Card>
+			<CardHeader>
+				{category.attributes.Title}
+			</CardHeader>
+		</Card>
 	)
 }
 
