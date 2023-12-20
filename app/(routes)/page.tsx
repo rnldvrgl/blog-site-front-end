@@ -9,7 +9,7 @@ const options = {
 }
 async function fetchCategories() {
   try {
-    const res = await fetch("http://127.0.0.1:1337/api/categories", options);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/categories`, options);
 
     const response = await res.json();
 
@@ -21,7 +21,7 @@ async function fetchCategories() {
 
 async function fetchBlogs() {
   try {
-    const res = await fetch("http://127.0.0.1:1337/api/blogs?populate=*", options);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/blogs?populate=`, options);
 
     const response = await res.json();
 

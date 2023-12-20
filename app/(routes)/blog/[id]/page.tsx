@@ -11,7 +11,7 @@ const options = {
 }
 async function fetchBlog(id: number) {
 	try {
-		const res = await fetch(`http://127.0.0.1:1337/api/blogs/${id}?populate=*`, options);
+		const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/blogs/${id}?populate=*`, options);
 
 		const response = await res.json();
 
