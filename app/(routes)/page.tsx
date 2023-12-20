@@ -21,7 +21,7 @@ async function fetchCategories() {
 
 async function fetchBlogs() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/blogs?populate=`, options);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/blogs?populate=*`, options);
 
     const response = await res.json();
 
