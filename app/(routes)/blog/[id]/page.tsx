@@ -28,7 +28,7 @@ const BlogPage = async ({ params }: any) => {
 
 	console.log(imageUrl)
 	return (
-		<div className='container'>
+		<div className='container py-6'>
 			<Link href={"/"} className='flex items-center gap-3 w-fit group'>
 				<IoChevronBack className="transition-all duration-300 ease-in-out group-hover:-translate-x-1" />
 				Back
