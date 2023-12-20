@@ -24,7 +24,7 @@ async function fetchBlog(id: number) {
 const BlogPage = async ({ params }: any) => {
 	const blog = await fetchBlog(params?.id);
 	console.log(blog)
-	const imageUrl = "http://127.0.0.1:1337" + blog?.data?.attributes.image?.data?.attributes?.url;
+	const imageUrl = process.env.NEXT_PUBLIC_BASE_URL + blog?.data?.attributes.image?.data?.attributes?.url;
 
 	console.log(imageUrl)
 	return (
