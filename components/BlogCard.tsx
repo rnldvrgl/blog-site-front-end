@@ -1,24 +1,42 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Card, CardContent } from './ui/card'
+import { AspectRatio } from './ui/aspect-ratio'
+import { Badge } from './ui/badge'
 
-const BlogCard = () => {
+const BlogCard = ({ blog }: {
+	blog: any
+}) => {
+	const truncateBlogDesc = blog.attributes.description.length > 80 ? blog.attributes.description.substring(0, 80) + "..." : blog.attributes.description;
+
+	const imageUrl = "http://127.0.0.1:1337" + blog?.attributes.image?.data?.attributes?.url;
+	console.log(blog)
 	return (
-		<div className='p-4 mb-4 overflow-hidden border-gray-600 rounded-lg shadow-md cursor-pointer borer'>
-			<Link href={"/"}>
-				<div className='relative w-12 h-12'>
-					<Image className='rounded-t-lg' fill src={""} alt={""} width={300} height={200} />
-				</div>
-				<div className='p-2'>
-					<h2 className='mb-2 text-xl font-semibold overflow-ellipsis'>
-						Title of Blog
-					</h2>
-					<p className='text-gray-600'>
-						Desription of Blog
-					</p>
-				</div>
-			</Link>
-		</div>
+		<Card className='overflow-hidden cursor-pointer'>
+			<CardContent className='px-4 py-5'>
+				<Link href={"/"}>
+					<AspectRatio ratio={4 / 3} className='relative w-full'>
+						<Image fill className='border rounded-sm' objectFit="cover" src={blog?.attributes?.image?.data ? imageUrl : "/no-image.jpg"} alt={""} />
+					</AspectRatio>
+					<div className='p-2 mt-2'>
+						<div className='flex flex-wrap gap-3 my-2'>
+							{blog.attributes.categories.data.map((category: any) => (
+								<Badge key={category.id}>
+									{category.attributes.title}
+								</Badge>
+							))}
+						</div>
+						<h2 className='mb-2 text-xl font-semibold overflow-ellipsis'>
+							{blog.attributes.title}
+						</h2>
+						<p className='opacity-75'>
+							{truncateBlogDesc}
+						</p>
+					</div>
+				</Link>
+			</CardContent>
+		</Card>
 	)
 }
 

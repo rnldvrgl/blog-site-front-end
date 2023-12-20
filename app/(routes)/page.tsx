@@ -2,13 +2,12 @@ import Blogs from '@/components/Blogs'
 import Categories from '@/components/Categories'
 import Image from 'next/image'
 
-async function fetchCategories() {
-  const options = {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-    }
+const options = {
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
   }
-
+}
+async function fetchCategories() {
   try {
     const res = await fetch("http://127.0.0.1:1337/api/categories", options);
 
@@ -18,16 +17,27 @@ async function fetchCategories() {
   } catch (error) {
     console.log(error);
   }
-
 }
 
+async function fetchBlogs() {
+  try {
+    const res = await fetch("http://127.0.0.1:1337/api/blogs?populate=*", options);
+
+    const response = await res.json();
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export default async function Home() {
   const categories = await fetchCategories();
+  const blogs = await fetchBlogs();
 
   return (
-    <div className='grid gap-4 p-4 mt-6 place-items-center'>
+    <div className='container grid gap-4 pb-6 mt-6 place-items-center md:place-items-start'>
       <Categories categories={categories} />
-      <Blogs />
+      <Blogs blogs={blogs} />
     </div>
   )
 }

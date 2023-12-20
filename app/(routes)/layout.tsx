@@ -7,8 +7,8 @@ export default function RoutesLayout({
 }) {
 	return (
 		<>
-			<div className="flex items-center justify-between px-4 py-3">
-				<h1 className="text-xl font-black">
+			<div className="container flex items-center justify-between py-6">
+				<h1 className="text-2xl font-black">
 					<span className="dark:text-[#008970] text-[#99eedf]">
 						Vin
 					</span>
@@ -17,6 +17,7 @@ export default function RoutesLayout({
 					</span>
 					Coder
 				</h1>
+
 				<ModeToggle />
 			</div>
 			{children}

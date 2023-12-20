@@ -6,7 +6,7 @@ type TCategoriesProps = {
 		data: {
 			id: number;
 			attributes: {
-				Title: string;
+				title: string;
 				createdAt: string;
 			}
 		}[]
@@ -15,7 +15,7 @@ type TCategoriesProps = {
 
 const Categories = ({ categories }: TCategoriesProps) => {
 	return (
-		<div className='flex gap-6 mb-8 flex-wrap justify-center'>
+		<div className='flex flex-wrap justify-center gap-3 mb-8 md:justify-start'>
 			{categories.data.map((category) => (
 				<Category key={category.id} category={category} />
 			))}
