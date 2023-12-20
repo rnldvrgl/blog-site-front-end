@@ -24,7 +24,7 @@ async function fetchBlog(id: number) {
 const BlogPage = async ({ params }: any) => {
 	const blog = await fetchBlog(params?.id);
 	console.log(blog)
-	const imageUrl = process.env.NEXT_PUBLIC_BASE_URL + blog?.data?.attributes.image?.data?.attributes?.url;
+	const imageUrl = blog?.data?.attributes.image?.data?.attributes?.url;
 
 	console.log(imageUrl)
 	return (
@@ -37,7 +37,7 @@ const BlogPage = async ({ params }: any) => {
 				<Image fill objectFit='cover' src={blog?.data?.attributes?.image?.data ? imageUrl : "/no-image.jpg"} alt={""} />
 			</div>
 			<div className='mt-4'>
-				<div className='flex flex-wrap items-center my-4'>
+				<div className='flex flex-wrap items-center gap-3 my-4'>
 					{blog?.data?.attributes?.categories.data.map((category: any) => (
 						<Badge key={category.id}>
 							{category.attributes.title}

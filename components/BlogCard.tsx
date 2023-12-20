@@ -10,7 +10,7 @@ const BlogCard = ({ blog }: {
 }) => {
 	const truncateBlogDesc = blog.attributes.description.length > 80 ? blog.attributes.description.substring(0, 80) + "..." : blog.attributes.description;
 
-	const imageUrl = process.env.NEXT_PUBLIC_BASE_URL + blog?.attributes.image?.data?.attributes?.url;
+	const imageUrl = blog?.attributes.image?.data?.attributes?.url;
 
 	return (
 		<Card className='overflow-hidden cursor-pointer group'>
